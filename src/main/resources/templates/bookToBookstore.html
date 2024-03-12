@@ -11,29 +11,29 @@
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home">Home</a>
+    <a class="navbar-brand" href="home">Acasă</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="books">Books</a>
+          <a class="nav-link" aria-current="page" href="books">Cărți</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="bookstores">Bookstore</a>
+          <a class="nav-link" href="bookstores">Locații</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="bookToBookstore">Book to Bookstore</a>
+          <a class="nav-link active" href="bookToBookstore">Asociere</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="search_books">Search books</a>
+          <a class="nav-link" href="search_books">Căutare</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <!--            <form class="d-flex">-->
+      <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+      <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+      <!--            </form>-->
     </div>
   </div>
 </nav>
@@ -47,19 +47,19 @@
 <div class="d-flex justify-content-center">
   <form action="#" th:action="@{/bookToBookstore}" th:object="${bookBookstoreDto}" method="post" style="width: 30%">
     <div class="mb-3">
-      <label for="bookstore_id" class="form-label">List of Bookstore:</label>
+      <label for="bookstore_id" class="form-label">Lista de Locații:</label>
       <select class="form-control" id="bookstore_id" th:field="*{bookstore_id}">
         <option th:each="bookstore: ${bookstoreList}" th:value="${bookstore.bookstore_id}" th:text="${bookstore.name}"></option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="book_id" class="form-label">List of Books:</label>
+      <label for="book_id" class="form-label">Lista de Cărți:</label>
       <select class="form-control" id="book_id" th:field="*{book_id}">
         <option th:each="book: ${bookList}" th:value="${book.book_id}" th:text="${book.name}"></option>
       </select>
     </div>
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary">Add</button>
+      <button type="submit" class="btn btn-primary">Adaugă</button>
     </div>
   </form>
 </div>
@@ -70,14 +70,14 @@
       <thead>
       <tr class="table-primary">
         <td style="width: 70%" th:text="${bookstoreName}"></td>
-        <td style="width: 30%">Actions</td>
+        <td style="width: 30%" th:text="#{td.book.actions}"></td>
       </tr>
       </thead>
       <tbody>
       <tr th:each="book: ${bookListForTable}">
         <td th:text="${book.name}"></td>
         <td>
-          <a th:href="@{/bookToBookstore/deleteBook(book_id=${book.book_id})}" class="btn btn-danger">Delete</a>
+          <a th:href="@{/bookToBookstore/deleteBook(book_id=${book.book_id})}" class="btn btn-danger">Șterge</a>
         </td>
       </tr>
       </tbody>

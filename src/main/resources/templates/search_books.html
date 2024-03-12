@@ -11,29 +11,29 @@
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home">Home</a>
+        <a class="navbar-brand" href="home">Acasă</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="books">Books</a>
+                    <a class="nav-link" aria-current="page" href="books">Cărți</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bookstores">Bookstore</a>
+                    <a class="nav-link" href="bookstores">Locații</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bookToBookstore">Book to Bookstore</a>
+                    <a class="nav-link" href="bookToBookstore">Asociere</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="search_books">Search books</a>
+                    <a class="nav-link active" href="search_books">Căutare</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <!--            <form class="d-flex">-->
+            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+            <!--            </form>-->
         </div>
     </div>
 </nav>
@@ -43,36 +43,36 @@
 <div class="d-flex justify-content-center">
     <form action="#" th:action="@{/search_books}" th:object="${bookSearch}" method="post" style="width: 30%">
         <div class="mb-3">
-            <label for="bookstore_name" class="form-label">Book name:</label>
+            <label for="bookstore_name" class="form-label" th:text="#{search.by.book.name}"></label>
             <input id="bookstore_name" type="text" class="form-control border" th:field="*{name}"/>
         </div>
         <div class="mb-3">
-            <label for="bookstore_author" class="form-label">Book author:</label>
+            <label for="bookstore_author" class="form-label" th:text="#{search.by.book.author}"></label>
             <input id="bookstore_author" type="text" class="form-control border" th:field="*{author}"/>
         </div>
         <div class="mb-3">
-            <label for="bookstore_id" class="form-label">List of Bookstore:</label>
+            <label for="bookstore_id" class="form-label" th:text="#{search.by.bookstore}"></label>
             <select class="form-control" id="bookstore_id" th:field="*{bookstore_id}">
                 <option th:value="#{select.all.elements.id}" th:text="#{select.all.elements}"></option>
                 <option th:each="bookstore: ${bookstoreList}" th:value="${bookstore.bookstore_id}" th:text="${bookstore.name}"></option>
             </select>
         </div>
         <div class="mb-3">
-            <label for="bookstore_type" class="form-label">Bookstore type:</label>
+            <label for="bookstore_type" class="form-label" th:text="#{search.by.bookstore.type}"></label>
             <select class="form-control" id="bookstore_type" th:field="*{bookstore_type}">
                 <option th:value="#{select.all.elements.id}" th:text="#{select.all.elements}"></option>
                 <option th:each="option: ${bookstoreTypes}" th:value="${option}" th:text="${option}"></option>
             </select>
         </div>
         <div class="mb-3">
-            <label for="bookstore_city" class="form-label">City:</label>
+            <label for="bookstore_city" class="form-label" th:text="#{td.bookstore.city}">City:</label>
             <select class="form-control" id="bookstore_city" th:field="*{city_id}">
                 <option th:value="#{select.all.elements.id}" th:text="#{select.all.elements}"></option>
                 <option th:each="city: ${cityList}" th:value="${city.city_id}" th:text="${city.name}"></option>
             </select>
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Search book</button>
+            <button type="submit" class="btn btn-primary">Caută cărți</button>
         </div>
     </form>
 </div>

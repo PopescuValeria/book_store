@@ -11,29 +11,29 @@
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home">Home</a>
+    <a class="navbar-brand" href="home">Acasă</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="books">Books</a>
+          <a class="nav-link" aria-current="page" href="books">Cărți</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  href="bookstores">Bookstore</a>
+          <a class="nav-link active" href="bookstores">Locații</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="bookToBookstore">Book to Bookstore</a>
+          <a class="nav-link" href="bookToBookstore">Asociere</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="search_books">Search books</a>
+          <a class="nav-link" href="search_books">Căutare</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <!--            <form class="d-flex">-->
+      <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+      <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+      <!--            </form>-->
     </div>
   </div>
 </nav>
@@ -46,33 +46,33 @@
 <div class="d-flex justify-content-center">
   <form action="#" th:action="@{/bookstores}" th:object="${bookstore}" method="post" style="width: 30%">
     <div class="mb-3">
-      <label for="bookstore_id" class="form-label">Bookstore id:</label>
+      <label for="bookstore_id" class="form-label" th:text="#{td.bookstore.id}"></label>
       <input id="bookstore_id" type="text" class="form-control border" th:field="*{bookstore_id}"/>
     </div>
     <div class="mb-3">
-      <label for="bookstore_name" class="form-label">Bookstore name:</label>
+      <label for="bookstore_name" class="form-label" th:text="#{td.bookstore.name}"></label>
       <input id="bookstore_name" type="text" class="form-control border" th:field="*{name}"/>
     </div>
     <div class="mb-3">
-      <label for="bookstore_city" class="form-label">City:</label>
+      <label for="bookstore_city" class="form-label" th:text="#{td.bookstore.city}"></label>
       <select class="form-control" id="bookstore_city" th:field="*{city_id}">
         <option th:each="city: ${cityList}" th:value="${city.city_id}" th:text="${city.name}"
                 th:selected="${city.city_id == city_id}"></option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="bookstore_street" class="form-label">Bookstore street:</label>
+      <label for="bookstore_street" class="form-label" th:text="#{td.bookstore.street}"></label>
       <input id="bookstore_street" type="text" class="form-control" th:field="*{street}"/>
     </div>
     <div class="mb-3">
-      <label for="bookstore_type" class="form-label">Bookstore type:</label>
+      <label for="bookstore_type" class="form-label" th:text="#{td.bookstore.type}"></label>
       <select class="form-control" id="bookstore_type" th:field="*{bookstoreType}">
         <option th:each="option: ${bookstoreTypes}" th:value="${option}" th:text="${option}"
                 th:selected="${option == bookstoreType ? 'selected' : 'false'}"></option>
       </select>
     </div>
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary">Save or Update</button>
+      <button type="submit" class="btn btn-primary">Salaveză</button>
     </div>
   </form>
 </div>
@@ -87,7 +87,7 @@
         <td style="width: 19%" th:text="#{td.bookstore.city}"/>
         <td style="width: 19%" th:text="#{td.bookstore.street}"/>
         <td style="width: 19%" th:text="#{td.bookstore.type}"/>
-        <td style="width: 19%">Actions</td>
+        <td style="width: 19%" th:text="#{td.book.actions}"></td>
       </tr>
       </thead>
       <tbody>
@@ -98,8 +98,8 @@
         <td th:text="${bookstore.street}"></td>
         <td th:text="${bookstore.bookstoreType}"></td>
         <td>
-          <a th:href="@{/bookstores/editBookstore(bookstore_id=${bookstore.bookstore_id})}" class="btn btn-info">Edit</a>
-          <a th:href="@{/bookstores/deleteBookstore(bookstore_id=${bookstore.bookstore_id})}" class="btn btn-danger">Delete</a>
+          <a th:href="@{/bookstores/editBookstore(bookstore_id=${bookstore.bookstore_id})}" class="btn btn-info">Editează</a>
+          <a th:href="@{/bookstores/deleteBookstore(bookstore_id=${bookstore.bookstore_id})}" class="btn btn-danger">Șterge</a>
         </td>
       </tr>
       </tbody>
