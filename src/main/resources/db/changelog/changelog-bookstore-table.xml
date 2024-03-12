@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="Valeria Popescu">
+        <createTable tableName="bookstore">
+            <column name="bookstore_id" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(36)"/>
+            <column name="street" type="varchar(36)"/>
+            <column name="bookstore_type" type="varchar(36)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1" author="Valeria Popescu">
+        <createTable tableName="book_to_bookstore">
+            <column name="book_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bookstore_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Valeria Popescu">
+        <addForeignKeyConstraint
+                baseTableName="book_to_bookstore"
+                baseColumnNames="book_id"
+                constraintName="fk_01_book_to_bookstore"
+                referencedTableName="book"
+                referencedColumnNames="book_id"/>
+    </changeSet>
+
+    <changeSet id="3" author="Valeria Popescu">
+        <addForeignKeyConstraint
+                baseTableName="book_to_bookstore"
+                baseColumnNames="bookstore_id"
+                constraintName="fk_02_book_to_bookstore"
+                referencedTableName="bookstore"
+                referencedColumnNames="bookstore_id"/>
+    </changeSet>
+
+    <changeSet id="4" author="Valeria Popescu">
+        <modifyDataType
+                tableName="bookstore"
+                columnName="name"
+                newDataType="varchar(100)"/>
+    </changeSet>
+
+    <changeSet id="5" author="Valeria Popescu">
+        <addColumn tableName="bookstore">
+            <column name="city_id" type="int"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

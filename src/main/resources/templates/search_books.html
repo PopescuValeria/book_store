@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="books">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bookstores">Bookstore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bookToBookstore">Book to Bookstore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="search_books">Search books</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+<div class="d-flex justify-content-center">
+    <form action="#" th:action="@{/search_books}" th:object="${bookSearch}" method="post" style="width: 30%">
+        <div class="mb-3">
+            <label for="bookstore_name" class="form-label">Book name:</label>
+            <input id="bookstore_name" type="text" class="form-control border" th:field="*{name}"/>
+        </div>
+        <div class="mb-3">
+            <label for="bookstore_author" class="form-label">Book author:</label>
+            <input id="bookstore_author" type="text" class="form-control border" th:field="*{author}"/>
+        </div>
+        <div class="mb-3">
+            <label for="bookstore_id" class="form-label">List of Bookstore:</label>
+            <select class="form-control" id="bookstore_id" th:field="*{bookstore_id}">
+                <option th:value="#{select.all.elements.id}" th:text="#{select.all.elements}"></option>
+                <option th:each="bookstore: ${bookstoreList}" th:value="${bookstore.bookstore_id}" th:text="${bookstore.name}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="bookstore_type" class="form-label">Bookstore type:</label>
+            <select class="form-control" id="bookstore_type" th:field="*{bookstore_type}">
+                <option th:value="#{select.all.elements.id}" th:text="#{select.all.elements}"></option>
+                <option th:each="option: ${bookstoreTypes}" th:value="${option}" th:text="${option}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="bookstore_city" class="form-label">City:</label>
+            <select class="form-control" id="bookstore_city" th:field="*{city_id}">
+                <option th:value="#{select.all.elements.id}" th:text="#{select.all.elements}"></option>
+                <option th:each="city: ${cityList}" th:value="${city.city_id}" th:text="${city.name}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Search book</button>
+        </div>
+    </form>
+</div>
+
+<div th:if="${bookList!= null and !bookList.isEmpty()}">
+    <div class="d-flex justify-content-center">
+        <table class="table table-hover" style="width: 50%">
+            <thead>
+            <tr class="table-primary">
+                <td style="width: 30%" th:text="#{td.book.name}"></td>
+                <td style="width: 30%" th:text="#{td.book.author}"></td>
+                <td style="width: 30%" th:text="#{td.book.bookstore}"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book: ${bookList}">
+                <td th:text="${book.name}"></td>
+                <td th:text="${book.author}"></td>
+                <td>
+                    <ul>
+                        <li th:each="bookstore: ${book.getBookstoreList()}" th:text="${bookstore.name}"></li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
