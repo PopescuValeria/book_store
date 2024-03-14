@@ -7,4 +7,5 @@
     <include file="/db/changelog/changelog-book-table.xml"/>
     <include file="/db/changelog/changelog-bookstore-table.xml"/>
     <include file="/db/changelog/changelog-city-table.xml"/>
+    <include file="/db/changelog/changelog-user-table.xml"/>
 </databaseChangeLog>
