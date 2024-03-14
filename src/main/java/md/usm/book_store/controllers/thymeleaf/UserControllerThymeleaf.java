@@ -8,4 +8,5 @@ import org.springframework.stereotype.Controller;
 public class UserControllerThymeleaf {
     private final UserService userService;
 
+
 }

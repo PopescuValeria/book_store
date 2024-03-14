@@ -79,7 +79,7 @@
 
 <div th:if="${bookstoreList!=null and !bookstoreList.isEmpty()}">
   <div class="d-flex justify-content-center">
-    <table class="table table-hover" style="width: 50%">
+    <table class="table table-hover" style="width: 70%">
       <thead>
       <tr class="table-primary">
         <td style="width: 5%" th:text="#{td.bookstore.id}"/>
@@ -94,7 +94,7 @@
       <tr th:each="bookstore: ${bookstoreList}">
         <td th:text="${bookstore.bookstore_id}"></td>
         <td th:text="${bookstore.name}"></td>
-        <td th:text="${bookstore.city_id}"></td>
+        <td th:text="${cityList.get(bookstore.city_id - 1).name}"></td>
         <td th:text="${bookstore.street}"></td>
         <td th:text="${bookstore.bookstoreType}"></td>
         <td>

@@ -30,10 +30,13 @@
           <a class="nav-link" href="search_books">Căutare</a>
         </li>
       </ul>
-      <!--            <form class="d-flex">-->
-      <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-      <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-      <!--            </form>-->
+      <form class="d-flex" th:action="@{/bookToBookstore/bookstore}" method="get">
+        <select class="form-control"  name="bookstore_id">
+          <option th:each="bookstore: ${bookstoreList}" th:value="${bookstore.bookstore_id}" th:text="${bookstore.name}"
+                  th:selected="${bookstore.bookstore_id == bookstore_id ? 'selected' : 'false'}"></option>
+        </select>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
