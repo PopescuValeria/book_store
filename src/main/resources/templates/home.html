@@ -21,30 +21,51 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="books">Cărți</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bookstores">Locații</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bookToBookstore">Asociere</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="search_books">Căutare</a>
                 </li>
+                <li class="nav-item" id="book-nav-item">
+                    <a class="nav-link" aria-current="page" href="books">Cărți</a>
+                </li>
+                <li class="nav-item" id="bookstore-nav-item">
+                    <a class="nav-link" href="bookstores">Locații</a>
+                </li>
+                <li class="nav-item" id="bookToBookstore-nav-item">
+                    <a class="nav-link" href="bookToBookstore">Asociere</a>
+                </li>
             </ul>
-            <!--            <form class="d-flex">-->
-            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-            <!--            </form>-->
+            <a class="btn btn-primary" id="loginButton" href="/loginAdmin" role="button">Logare Admin</a>
+            <a class="btn btn-primary" id="deconectButton" onclick="logout()" role="button">Delogare</a>
         </div>
     </div>
 </nav>
+<script>
+    let isAdmin = sessionStorage.getItem("isAdmin");
+    let visibility;
+    let visibilityLogin;
+
+    visibility = "none";
+    visibilityLogin = "inline";
+    if(isAdmin === "true"){
+        visibility = "inline";
+        visibilityLogin = "none";
+    }
+    console.log(isAdmin);
+    document.getElementById("book-nav-item").style.display = visibility;
+    document.getElementById("bookstore-nav-item").style.display = visibility;
+    document.getElementById("bookToBookstore-nav-item").style.display = visibility;
+    document.getElementById("deconectButton").style.display = visibility;
+    document.getElementById("loginButton").style.display = visibilityLogin;
+
+    function logout(){
+        sessionStorage.removeItem("isAdmin");
+        location.href = "/home";
+    }
+</script>
 <br>
 <br>
 
 <div class="content">
-    <h1 class="book-hub-title">Book Hub</h1>
+    <h1 class="book-hub-title">Baza de date de cărți</h1>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
