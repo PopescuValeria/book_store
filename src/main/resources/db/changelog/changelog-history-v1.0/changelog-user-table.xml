@@ -5,6 +5,11 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="0" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user"/>
+            </not>
+        </preConditions>
         <createTable tableName="user">
             <column name="user_id" type="varchar(36)">
                 <constraints primaryKey="true"/>
@@ -15,5 +20,9 @@
             <column name="password" type="varchar(36)"/>
             <column name="role_id" type="int"/>
         </createTable>
+    </changeSet>
+
+    <changeSet id="1" author="Valeria Popescu">
+        <modifyDataType tableName="user" columnName="password" newDataType="varchar(64)"/>
     </changeSet>
 </databaseChangeLog>

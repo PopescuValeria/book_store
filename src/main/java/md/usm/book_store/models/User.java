@@ -7,7 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
 
+import java.sql.Types;
 import java.util.UUID;
 
 @Entity
@@ -17,6 +20,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class User {
     @Id
+    @JdbcTypeCode(Types.VARCHAR)
     @Column(columnDefinition = "VARCHAR(36)")
     private UUID user_id;
     private String first_name;

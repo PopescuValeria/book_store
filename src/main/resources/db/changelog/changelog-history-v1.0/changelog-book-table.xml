@@ -5,14 +5,17 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="0" author="Valeria Popescu">
-        <createTable tableName="city">
-            <column name="city_id" type="int">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="book"/>
+            </not>
+        </preConditions>
+        <createTable tableName="book">
+            <column name="book_id" type="int">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(50)"/>
+            <column name="name" type="varchar(36)"/>
+            <column name="author" type="varchar(36)"/>
         </createTable>
-    </changeSet>
-    <changeSet id="1" author="Valeria Popescu">
-        <addAutoIncrement tableName="city" columnName="city_id" columnDataType="int"/>
     </changeSet>
 </databaseChangeLog>

@@ -19,7 +19,7 @@ public class UserService {
     }
 
     public User findUserById(UUID user_id){
-        return userRepository.findById(user_id).orElseGet(null);
+        return userRepository.findById(user_id).orElse(new User());
     }
 
     public List<User> findAllUsers(){
@@ -28,5 +28,9 @@ public class UserService {
 
     public void deleteUserById(UUID user_id){
         userRepository.deleteById(user_id);
+    }
+
+    public User findByUsername(String email){
+        return userRepository.findByEmail(email);
     }
 }

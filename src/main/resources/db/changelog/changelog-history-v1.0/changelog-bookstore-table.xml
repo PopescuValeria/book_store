@@ -5,6 +5,11 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="0" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="bookstore"/>
+            </not>
+        </preConditions>
         <createTable tableName="bookstore">
             <column name="bookstore_id" type="int">
                 <constraints primaryKey="true"/>
@@ -16,6 +21,11 @@
     </changeSet>
 
     <changeSet id="1" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="book_to_bookstore"/>
+            </not>
+        </preConditions>
         <createTable tableName="book_to_bookstore">
             <column name="book_id" type="int">
                 <constraints nullable="false"/>
@@ -27,6 +37,11 @@
     </changeSet>
 
     <changeSet id="2" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyTableName="book_to_bookstore" foreignKeyName="fk_01_book_to_bookstore"/>
+            </not>
+        </preConditions>
         <addForeignKeyConstraint
                 baseTableName="book_to_bookstore"
                 baseColumnNames="book_id"
@@ -36,6 +51,11 @@
     </changeSet>
 
     <changeSet id="3" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyTableName="book_to_bookstore" foreignKeyName="fk_02_book_to_bookstore"/>
+            </not>
+        </preConditions>
         <addForeignKeyConstraint
                 baseTableName="book_to_bookstore"
                 baseColumnNames="bookstore_id"
@@ -52,6 +72,11 @@
     </changeSet>
 
     <changeSet id="5" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="bookstore" columnName="city_id"/>
+            </not>
+        </preConditions>
         <addColumn tableName="bookstore">
             <column name="city_id" type="int"/>
         </addColumn>

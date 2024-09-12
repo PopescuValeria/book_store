@@ -37,29 +37,6 @@
         </div>
     </div>
 </nav>
-<script>
-    let isAdmin = sessionStorage.getItem("isAdmin");
-    let visibility;
-    let visibilityLogin;
-
-    visibility = "none";
-    visibilityLogin = "inline";
-    if(isAdmin === "true"){
-        visibility = "inline";
-        visibilityLogin = "none";
-    }
-    console.log(isAdmin);
-    document.getElementById("book-nav-item").style.display = visibility;
-    document.getElementById("bookstore-nav-item").style.display = visibility;
-    document.getElementById("bookToBookstore-nav-item").style.display = visibility;
-    document.getElementById("deconectButton").style.display = visibility;
-    document.getElementById("loginButton").style.display = visibilityLogin;
-
-    function logout(){
-        sessionStorage.removeItem("isAdmin");
-        location.href = "/home";
-    }
-</script>
 <br>
 <br>
 

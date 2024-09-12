@@ -4,8 +4,8 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="/db/changelog/changelog-book-table.xml"/>
-    <include file="/db/changelog/changelog-bookstore-table.xml"/>
-    <include file="/db/changelog/changelog-city-table.xml"/>
-    <include file="/db/changelog/changelog-user-table.xml"/>
+    <include file="/db/changelog/changelog-history-v1.0/changelog-book-table.xml"/>
+    <include file="/db/changelog/changelog-history-v1.0/changelog-bookstore-table.xml"/>
+    <include file="/db/changelog/changelog-history-v1.0/changelog-city-table.xml"/>
+    <include file="/db/changelog/changelog-history-v1.0/changelog-user-table.xml"/>
 </databaseChangeLog>
