@@ -25,4 +25,15 @@
     <changeSet id="1" author="Valeria Popescu">
         <modifyDataType tableName="user" columnName="password" newDataType="varchar(64)"/>
     </changeSet>
+
+    <changeSet id="2" author="Valeria Popescu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+            <columnExists tableName="user" columnName="username"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="user">
+            <column name="username" type="varchar(36)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

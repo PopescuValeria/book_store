@@ -1,4 +1,4 @@
-package md.usm.book_store.security;
+package md.usm.book_store.security.crypto;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
 

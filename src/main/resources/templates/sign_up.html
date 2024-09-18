@@ -12,19 +12,15 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home">Acasă</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="loginAdmin">LogIn</a>
                 </li>
                 <li class="nav-item" id="book-nav-item">
-                    <a class="nav-link" aria-current="page" href="sign_up">SignUp</a>
+                    <a class="nav-link active" aria-current="page" href="sign_up">SignUp</a>
                 </li>
             </ul>
         </div>
@@ -50,6 +46,10 @@
         <div class="mb-3">
             <label for="user_email" class="form-label" th:text="#{td.user.email}"></label>
             <input id="user_email" type="text" class="form-control" th:field="*{email}"/>
+        </div>
+        <div class="mb-3">
+            <label for="user_username" class="form-label" th:text="#{td.user.username}"></label>
+            <input id="user_username" type="text" class="form-control" th:field="*{username}"/>
         </div>
         <div class="mb-3">
             <label for="user_password" class="form-label" th:text="#{td.user.password}"></label>

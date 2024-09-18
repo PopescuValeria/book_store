@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 
 import java.sql.Types;
 import java.util.UUID;
@@ -26,6 +25,7 @@ public class User {
     private String first_name;
     private String last_name;
     private String email;
+    private String username;
     private String password;
     private Integer role_id;
 }

@@ -11,10 +11,10 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
-    color: rgba(0, 204, 204, 0.9);
+    color:#b7d6f8;
     font-size: 7em;
     text-align: center;
-    border: 5px solid white;
+    border: 5px solid #b7d6f8;
 }
 .data-table{
     font-family: "Arial Rounded MT Bold";
@@ -22,11 +22,19 @@ body {
     background: rgb(230, 255, 255, 0.7);
 }
 nav{
-    font-family: "Arial Rounded MT Bold";
+    font-family: "Times New Roman", serif;
     font-weight: bold;
     font-size: 1.5em;
-    /*background: rgb(153, 77, 0, 0.5);*/
-    /*color: white;*/
+    background: rgba(52, 39, 26, 0.5);
+    color: white;
+    border: 5px white;
+}
+li a:hover:not(.active) {
+    color: white;
+    background-color: #111;
+}
+.active {
+    background-color: #183128;
 }
 thead{
     font-weight: bold;

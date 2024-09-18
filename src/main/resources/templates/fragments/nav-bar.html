@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="navBar()">
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" id="main-link" href="home">Acasă</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" th:classappend="${request.requestURI  == '/search_books'} ? 'active' : ''" href="search_books">Căutare</a>
+                        </li>
+                        <li th:if="${isAdmin}" class="nav-item" id="book-nav-item">
+                            <a class="nav-link" th:classappend="${request.requestURI  == '/books'} ? 'active' : ''"  href="books">Cărți</a>
+                        </li>
+                        <li th:if="${isAdmin}" class="nav-item" id="bookstore-nav-item">
+                            <a class="nav-link" th:classappend="${request.requestURI  == '/bookstores'} ? 'active' : ''" href="bookstores">Locații</a>
+                        </li>
+                        <li th:if="${isAdmin}" class="nav-item" id="bookToBookstore-nav-item">
+                            <a class="nav-link" th:classappend="${request.requestURI  == '/bookToBookstore'} ? 'active' : ''" href="bookToBookstore">Asociere</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-outline-success me-2" id="deconectButton" href="/logout" role="button">Delogare</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</html>
