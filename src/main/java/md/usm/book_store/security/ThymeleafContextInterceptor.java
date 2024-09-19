@@ -22,8 +22,8 @@ public class ThymeleafContextInterceptor implements HandlerInterceptor {
             if (jwtToken != null){
                 Integer role = (Integer) getUserAttributeFromToken(jwtToken, UserAttributes.ROLE);
                 modelAndView.addObject("isAdmin", Objects.equals(role, Roles.ADMIN));
-                modelAndView.addObject("request", request);
             }
+            modelAndView.addObject("request", request);
         }
     }
 }
